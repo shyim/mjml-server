@@ -1,0 +1,15 @@
+{
+  "name": "mjml-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^1.1.1",
+    "mjml": "^4.0.0"
+  }
+}
