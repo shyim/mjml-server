@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "fastify": "^2.14.0",
-    "mjml": "^4.6.2"
+    "mjml": "^4.6.3"
   }
 }
