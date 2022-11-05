@@ -1,10 +1,13 @@
 const fastify = require('fastify')();
 const mjml = require('mjml');
 
-fastify.post('/', function (request, reply) {
+fastify.post('/', async function (request) {
+    if (request.body === undefined) {
+        return { error: 'No body provided' };
+    }
+
     if (typeof request.body.mjml === 'undefined' || request.body.mjml === null) {
-        reply.send({});
-        return;
+        return {};
     }
 
     let result = mjml(request.body.mjml);
@@ -15,11 +18,16 @@ fastify.post('/', function (request, reply) {
         });
     }
 
-    reply.send(result)
+    return result;
 });
 
-// Run the server!
-fastify.listen(3000, '127.0.0.1', function (err) {
-    if (err) throw err;
-    console.log(`server listening on ${fastify.server.address().port}`)
-});
+const start = async () => {
+    try {
+        console.log('Starting server at port 3000');
+        await fastify.listen({ port: 3000 })
+    } catch (err) {
+        fastify.log.error(err)
+        process.exit(1)
+    }
+}
+start()
